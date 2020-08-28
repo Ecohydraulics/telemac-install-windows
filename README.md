@@ -56,7 +56,15 @@ On Linux download and install the following programs:
 ## Download files form TELEMAC SVN repository
 Download the latest version of open TELEMAC from the SVN repository indicated on the [developer's website](http://www.opentelemac.org/index.php/sources-svn).
 
+### Windows
 At the time of writing this article, the address of the latest SVN repository is [http://svn.opentelemac.org/svn/opentelemac/tags/v8p1r0/](http://svn.opentelemac.org/svn/opentelemac/tags/v8p1r0/).
+
+### Linux
+Open the Terminal in the target directory where you want to install TELEMAC and type:
+
+```
+svn co http://svn.opentelemac.org/svn/opentelemac/tags/v8p1r0
+```
 
 ## Install (compile)
 http://www.opentelemac.org/index.php/documentation/installation13?lang=en
@@ -93,8 +101,12 @@ To test if the installation was successful, go to the [Run > Test on *Windows*](
 
 ### Linux
 
-Follow the [installation instructions](http://wiki.opentelemac.org/doku.php?id=installation_on_linux) on the developer's website.
+Follow the [installation instructions](http://wiki.opentelemac.org/doku.php?id=installation_on_linux) on the developer's website:
 
+Load the adapted environment file in Terminal with:
+```
+source pysource.gfortranHPC.sh
+```
 
 ## OpenTelemac Docker
 
