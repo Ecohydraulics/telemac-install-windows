@@ -45,6 +45,20 @@ Variable Value: C:\MinGW\bin
 * Click *OK* in the *Environment Variables* and *System Properties* windows.
 * Close all open command line windows (if any), and re-open a new command line window (must be successively done). Type `gfortran`. Now, the system's reponse should be *gfortran: fatal error: no input files* (which is OK here, because we only want to test if the system recognizes the `gfortran` command).
 
+Further action is required to add the *MinGW pthread* library (read more on [stackoverflow.com](https://stackoverflow.com/questions/21827392/cannot-find-lpthread)):
+
+* Download PThreads for Win32 (POSIX)](https://www.sourceware.org/pthreads-win32/). At the time of writing this workflow, the latest version is *pthreads-w32-2-9-1*, which is available as a zipped folder tree at the [developer's ftp server](ftp://sourceware.org/pub/pthreads-win32).
+* Unpack all `*.lib` and `*.a` files ( from `\pthreads-w32-2-9-1-release.zip\Pre-built.2\lib\x64`) to `C:\MinGW\lib`
+* Unpack all header files (`*.h` from `\pthreads-w32-2-9-1-release.zip\Pre-built.2\include`) to `C:\MinGW\include`
+* Unpack dynamic library link files (`*.dll` from `\pthreads-w32-2-9-1-release.zip\Pre-built.2\dll\x64`) to `C:\Windows`
+* If you are using *Komodo* or any other IDE make sure that it recognizes *pthreads*:
+	+ Go to *Project* > *Properties*
+	+ Go to *C/C++ build* > *GCC C Compiler* > *Miscellaneous*
+	+ Add `"-pthread"` to the beginning of *Other Flags*
+	+ Repeat/verify the procedure in *C/C++ build* > *Settings* > *GCC C Compiler* > *Libraries*
+	+ Include the `"pthread"` to other libraries and click *Apply* to rebuild the project.
+* ALTERNATIVE: Install *Cygwin* and add the library to *MinGW* (see discussion on [mingw.org](http://www.mingw.org/wiki/pthreads_library)). Then add `C:/cygwin/lib` to the settings of the *Library search path* (in any IDE such as *PyCharm* or *Komodo*): `Properties` > `C/C++ build` > `Settings` > `MinGW C Linker` > `Libraries`
+
 > ***Note***: More information about Fortran compilers for *Windows* can be found in the [GCC Wiki](https://gcc.gnu.org/wiki/GFortranBinariesWindows).
 
 
